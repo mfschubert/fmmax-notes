@@ -1,0 +1,66 @@
+[project]
+
+name = "fmmax-notes"
+version = "v0.0.0"
+description = "Notes for the fmmax simulator."
+keywords = ["fmm", "rcwa", "fmmax"]
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+
+authors = [
+    {name = "Martin Schubert", email = "mfschubert@gmail.com"},
+]
+maintainers = [
+    {name = "Martin Schubert", email = "mfschubert@gmail.com"},
+]
+
+dependencies = [
+    "numpy",
+    "fmmax",
+    "matplotlib",
+    "jupyter-book",
+    "scipy",
+    "scikit-image",
+    "sphinx-autodoc-typehints",
+    "sphinx-click",
+]
+
+[project.optional-dependencies]
+tests = [
+    "parameterized",
+    "pytest",
+    "pytest-cov",
+]
+dev = [
+    "mypy",
+    "pre-commit",
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+"imageruler" = ["py.typed"]
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]  # Allow tests with same name in different dirs.
+pythonpath = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[tool.isort]
+multi_line_output = 3
+line_length = 88
+include_trailing_comma = true
+
+[tool.pydocstyle]
+inherit = false
+convention = "google"
